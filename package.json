@@ -2,12 +2,17 @@
   "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
   "name": "flipper-plugin-bridgespy",
   "id": "com.sylvanaar.flipper.bridgespy",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "dist/bundle.js",
   "flipperBundlerEntry": "src/index.tsx",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/sylvanaar/flipper-plugin-bridgespy.git",
+    "type": ""
+  },
   "keywords": [
-    "flipper-plugin"
+    "flipper-plugin",
+    "react-native"
   ],
   "icon": "apps",
   "title": "Bridge Spy",
@@ -19,18 +24,18 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "flipper": "latest",
-    "antd": "latest"
+    "flipper": "^0.69.0",
+    "antd": "^4.9.4"
   },
   "devDependencies": {
-    "@babel/preset-react": "latest",
-    "@babel/preset-typescript": "latest",
-    "@types/jest": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "antd": "latest",
-    "flipper": "latest",
-    "flipper-pkg": "latest",
-    "jest": "latest"
+    "@babel/preset-react": "7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/jest": "^26.0.19",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "antd": "^4.9.4",
+    "flipper": "0.69.0",
+    "flipper-pkg": "0.69.0",
+    "jest": "26.6.3"
   }
 }
