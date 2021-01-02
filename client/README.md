@@ -9,6 +9,8 @@
 
 This library requires you to install `react-native-flipper` in your react-native project. It will not run without it.
 
+You must load this library somehow, e.g.  `require "flipper-plugin-bridgespy-client"` in your `index.js`
+
 ## Author
 
 👤 **Jon Akhtar (sylvanaar)**
