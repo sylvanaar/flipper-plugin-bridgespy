@@ -13,6 +13,22 @@ import {
   FlexColumn,
 } from "flipper";
 
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
+
+Sentry.init({
+  dsn: "https://d5f779a2974943bdb3c0aa09cbfcbc2e@o483753.ingest.sentry.io/5577125",
+  autoSessionTracking: true,
+  integrations: [
+    new Integrations.BrowserTracing(),
+  ],
+
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 0.5,
+});
+
+
 type Id = string;
 
 type DataRow = {
