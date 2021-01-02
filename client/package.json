@@ -1,8 +1,8 @@
 {
   "name": "flipper-plugin-bridgespy-client",
   "id": "com.sylvanaar.flipper.bridgespy",
-  "version": "0.1.1",
-  "main": "dist/bundle.js",
+  "version": "0.1.2",
+  "main": "lib/index.js",
   "license": "MIT",
   "repository": "sylvanaar/flipper-plugin-bridgespy",
   "keywords": [
