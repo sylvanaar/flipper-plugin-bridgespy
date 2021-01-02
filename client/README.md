@@ -1,5 +1,5 @@
 # Welcome to flipper-plugin-bridgespy-client 👋
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/npm/v/flipper-plugin-bridgespy-client)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/sylvanaar/flipper-plugin-bridgespy#readme)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/sylvanaar/flipper-plugin-bridgespy/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/github/license/sylvanaar/flipper-plugin-bridgespy)](https://github.com/sylvanaar/flipper-plugin-bridgespy/blob/master/LICENSE)
