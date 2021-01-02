@@ -7,6 +7,8 @@
 
 > React-Native bridge spy implementation for Flipper
 
+This library requires you to install `react-native-flipper` in your react-native project. It will not run without it.
+
 ## Author
 
 👤 **Jon Akhtar (sylvanaar)**
