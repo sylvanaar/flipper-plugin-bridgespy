@@ -2,20 +2,18 @@
   "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
   "name": "flipper-plugin-bridgespy",
   "id": "com.sylvanaar.flipper.bridgespy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/bundle.js",
   "flipperBundlerEntry": "src/index.tsx",
   "license": "MIT",
-  "repository": {
-    "url": "https://github.com/sylvanaar/flipper-plugin-bridgespy.git",
-    "type": ""
-  },
+  "repository": "sylvanaar/flipper-plugin-bridgespy",
   "keywords": [
     "flipper-plugin",
     "react-native"
   ],
   "icon": "apps",
   "title": "Bridge Spy",
+  "description": "React Native bridge spy Flipper plugin",
   "scripts": {
     "lint": "flipper-pkg lint",
     "prepack": "flipper-pkg lint && flipper-pkg bundle",
@@ -24,8 +22,8 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "flipper": "^0.69.0",
-    "antd": "^4.9.4"
+    "antd": "^4.9.4",
+    "flipper": "^0.69.0"
   },
   "devDependencies": {
     "@babel/preset-react": "7.12.10",
