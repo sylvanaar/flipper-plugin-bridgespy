@@ -1,8 +1,7 @@
 {
-  "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
   "name": "flipper-plugin-bridgespy-client",
   "id": "com.sylvanaar.flipper.bridgespy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/bundle.js",
   "license": "MIT",
   "repository": "sylvanaar/flipper-plugin-bridgespy",
@@ -12,6 +11,7 @@
   ],
   "icon": "apps",
   "title": "Bridge Spy Client",
+  "description": " React-Native bridge spy implementation for Flipper",
   "scripts": {
     "clean": "yarn run rimraf lib",
     "build": "tsc",
