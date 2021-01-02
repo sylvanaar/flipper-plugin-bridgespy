@@ -1,91 +1,223 @@
-import {ManagedDataInspector, Panel, Text, createTablePlugin} from 'flipper';
 import React from "react";
+import {
+  Button,
+  colors,
+  DetailSidebar,
+  FlipperPlugin,
+  ManagedDataInspector,
+  Panel,
+  FlexCenter,
+  SearchableTable,
+  styled,
+  TableHighlightedRows,
+  FlexColumn,
+} from "flipper";
 
 type Id = string;
 
-type Row = {
-  id: Id,
-  time: number,
-  type: string,
-  module: string,
-  method: string | number,
-  args: string
+type DataRow = {
+  id: Id;
+  time: number;
+  type: string;
+  module: string;
+  method: string | number;
+  args: string;
 };
 
-function buildRow(row: Row) {
-  return {
+type MessageRow = {
+  columns: {
+    index: {
+      value: string;
+    };
+    time: {
+      value: string;
+    };
+    type: {
+      value?: string;
+      isFilterable: true;
+    };
+    module: {
+      value: string;
+      isFilterable: true;
+    };
+    method: {
+      value?: string;
+      isFilterable: true;
+    };
+    args: {
+      value?: string;
+      isFilterable: true;
+    };
+  };
+  timestamp: number;
+  payload?: any;
+  key: string;
+};
+
+type State = {
+  selectedId: string | null;
+};
+
+type PersistedState = {
+  messageRows: Array<MessageRow>;
+};
+
+const Placeholder = styled(FlexCenter)({
+  fontSize: 18,
+  color: colors.macOSTitleBarIcon,
+});
+
+function buildRow(row: DataRow | DataRow[]): MessageRow[] {
+  if (!(row instanceof Array)) row = [row];
+
+  return row.map((r) => ({
     columns: {
       index: {
-        value: <Text>{row.id}</Text>
+        value: r.id,
       },
       time: {
-        value: <Text>{new Date(row.time).toLocaleString()}</Text>,
-      },      
+        value: new Date(r.time).toLocaleString(undefined, {
+          fractionalSecondDigits: 3,
+          hour12: false,
+          year: "2-digit",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }),
+      },
       type: {
-        value: <Text>{row.type}</Text>,
-        filterValue: row.type,
+        value: r.type,
+        isFilterable: true,
       },
       module: {
-        value: <Text>{row.module ?? ""}</Text>,
-        filterValue: row.module ?? "",
+        value: r.module ?? "",
+        isFilterable: true,
       },
       method: {
-        value: <Text>{row.method.toString()}</Text>,
-        filterValue: row.method,
+        value: r.method.toString(),
+        isFilterable: true,
       },
       args: {
-        value: <Text>{JSON.stringify(row.args)}</Text>,
-        filterValue: JSON.stringify(row.args),
-      }
+        value: JSON.stringify(r.args),
+        isFilterable: true,
+      },
     },
-    key: row.id,
-    copyText: JSON.stringify(row),
-    filterValue: `${row.type} ${row.module} ${row.method} ${row.args}`,
-  };
-}
-
-function renderSidebar(row: Row) {
-  return (
-    <Panel floating={false} heading={'Data'}>
-      <ManagedDataInspector data={row.args} expandRoot={true} />
-    </Panel>
-  );
+    key: r.id,
+    payload: r,
+    timestamp: r.time,
+  }));
 }
 
 const columns = {
   index: {
-    value: "Id"
+    value: "Id",
   },
   time: {
-    value: 'Timestamp',
+    value: "Timestamp",
   },
   type: {
-    value: 'Direction',
+    value: "Direction",
   },
   module: {
-    value: 'Module',
+    value: "Module",
   },
   method: {
-    value: 'Method',
+    value: "Method",
   },
   args: {
-    value: 'Data',
-  },  
+    value: "Data",
+  },
 };
 
 const columnSizes = {
   index: "5%",
-  time: '10%',
-  type: '5%',
-  module: '10%',
-  method: '10%', 
-  name: 'flex',
+  time: "10%",
+  type: "5%",
+  module: "10%",
+  method: "10%",
+  args: "flex",
 };
 
-export default createTablePlugin({
-  method: 'newRow', // Method which should be subscribed to to get new rows with share Row (from above),
-  columns,
-  columnSizes,
-  renderSidebar,
-  buildRow,
-});
+
+
+export default class extends FlipperPlugin<State, any, PersistedState> {
+  static defaultPersistedState = {
+    messageRows: [],
+  };
+
+  state: State = {
+    selectedId: null,
+  };
+
+  static persistedStateReducer = (persistedState: PersistedState, method: string, payload: any): PersistedState => {
+    if (method === "newRow") {
+      return {
+        ...persistedState,
+        messageRows: [...persistedState.messageRows, ...buildRow(payload)].filter(
+          (row) => Date.now() - row.timestamp < 5 * 60 * 1000,
+        ),
+      };
+    }
+    return persistedState;
+  };
+  render() {
+    const clearTableButton = (
+      <Button onClick={this.clear} key="clear">
+        Clear Table
+      </Button>
+    );
+
+    return (
+      <FlexColumn grow={true}>
+        <SearchableTable
+          rowLineHeight={28}
+          floating={false}
+          multiline={true}
+          allowRegexSearch={true}
+          columnSizes={columnSizes}
+          columns={columns}
+          onRowHighlighted={this.onRowHighlighted}
+          rows={this.props.persistedState.messageRows}
+          stickyBottom={true}
+          actions={[ clearTableButton]}
+        />
+        <DetailSidebar>{this.renderSidebar()}</DetailSidebar>
+      </FlexColumn>
+    );
+  }
+
+  onRowHighlighted = (keys: TableHighlightedRows) => {
+    if (keys.length > 0) {
+      this.setState({
+        selectedId: keys[0],
+      });
+    }
+  };
+
+  renderSidebar() {
+    const { selectedId } = this.state;
+    const { messageRows } = this.props.persistedState;
+    if (selectedId !== null) {
+      const message = messageRows.find((row) => row.key == selectedId);
+      if (message != null) {
+        return this.renderExtra(message.payload);
+      }
+    }
+    return <Placeholder grow>Select a message to view details</Placeholder>;
+  }
+
+  renderExtra(extra: any) {
+    return (
+      <Panel floating={false} grow={false} heading={"Payload"}>
+        <ManagedDataInspector data={extra} expandRoot={false} />
+      </Panel>
+    );
+  }
+
+  clear = () => {
+    this.setState({ selectedId: null });
+    this.props.setPersistedState({ messageRows: [] });
+  };
+}
