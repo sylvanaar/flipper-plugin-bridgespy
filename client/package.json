@@ -1,7 +1,8 @@
 {
+  "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
   "name": "flipper-plugin-bridgespy-client",
   "id": "com.sylvanaar.flipper.bridgespy",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "main": "lib/index.js",
   "license": "MIT",
   "repository": "sylvanaar/flipper-plugin-bridgespy",
