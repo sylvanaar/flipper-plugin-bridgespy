@@ -1,6 +1,5 @@
 import { addPlugin, Flipper } from "react-native-flipper";
 import MessageQueue from "react-native/Libraries/BatchedBridge/MessageQueue";
-import stringifySafe from "./stringifySafe";
 
 const TO_JS = 0;
 let id = 0;
@@ -26,7 +25,8 @@ addPlugin({
         if (buffer.length === 1 || buffer.length === BATCH_SIZE)
           setTimeout(() => {
             try {
-              _connection?.send("newRow", stringifySafe(buffer));
+              JSON.stringify(buffer); // is there a better way to check for cycles?
+              _connection?.send("newRow", buffer);
             } finally {
               buffer.length = 0;
             }
