@@ -27,6 +27,8 @@ addPlugin({
             try {
               JSON.stringify(buffer); // is there a better way to check for cycles?
               _connection?.send("newRow", buffer);
+            } catch {
+              // ignore
             } finally {
               buffer.length = 0;
             }
