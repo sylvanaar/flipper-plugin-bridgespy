@@ -11,6 +11,8 @@
 
 You can install from inside Flipper using the 'Manage Plugins' option.
 
+In order to work, you must install the flipper-plugin-bridgespy-client package in your React Native project
+
 ## Run tests
 
 ```sh
