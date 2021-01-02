@@ -1,5 +1,4 @@
 {
-  "$schema": "https://fbflipper.com/schemas/plugin-package/v2.json",
   "name": "flipper-plugin-bridgespy-client",
   "id": "com.sylvanaar.flipper.bridgespy",
   "version": "0.1.6",
@@ -7,8 +6,8 @@
   "license": "MIT",
   "repository": "sylvanaar/flipper-plugin-bridgespy",
   "keywords": [
-    "flipper-plugin",
-    "react-native"
+    "react-native",
+    "flipper"
   ],
   "icon": "apps",
   "title": "Bridge Spy Client",
