@@ -5,7 +5,10 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/sylvanaar/flipper-plugin-bridgespy/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/github/license/sylvanaar/flipper-plugin-bridgespy)](https://github.com/sylvanaar/flipper-plugin-bridgespy/blob/master/LICENSE)
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.dev)
+
 > React Native bridge spy Flipper plugin
+
+![Screen image of the plugin's output](./screenshot.jpg)
 
 ## Install
 
@@ -23,12 +26,11 @@ yarn run test
 
 👤 **Jon Akhtar (sylvanaar)**
 
-* Github: [@sylvanaar](https://github.com/sylvanaar)
+-   Github: [@sylvanaar](https://github.com/sylvanaar)
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
 
 ## 📝 License
 
@@ -36,5 +38,6 @@ Copyright © 2021 [Jon Akhtar (sylvanaar)](https://github.com/sylvanaar).
 
 This project is [MIT](https://github.com/sylvanaar/flipper-plugin-bridgespy/blob/master/LICENSE) licensed.
 
-***
+* * *
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
