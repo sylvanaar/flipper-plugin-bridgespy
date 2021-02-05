@@ -13,7 +13,6 @@ addPlugin({
   },
   onConnect(connection) {
     _connection = connection;
-    console.log("connected");
 
     MessageQueue.spy((info: any) => {
       if (info.module !== "Flipper" && _connection) {
@@ -36,8 +35,6 @@ addPlugin({
       }
     });
     connection.receive("getData", (data, responder) => {
-      console.log("incoming data", data);
-
       responder.success({
         ack: true,
       });
@@ -46,7 +43,6 @@ addPlugin({
   onDisconnect() {
     _connection = undefined;
     MessageQueue.spy(false);
-    console.log("disconnected");
   },
   runInBackground() {
     return false;
