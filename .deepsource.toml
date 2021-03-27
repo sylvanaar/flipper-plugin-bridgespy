@@ -8,6 +8,13 @@ enabled = true
 
   [analyzers.meta]
   plugins = ["react"]
+  dialect = "typescript"
+  environment = ["nodejs", "jest"]
+  module_system = "es-modules"
+  dependency_file_paths = [
+    "client/package.json",
+    "package.json"
+  ]
 
 [[analyzers]]
 name = "secrets"
