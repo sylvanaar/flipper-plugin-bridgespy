@@ -5,6 +5,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/sylvanaar/flipper-plugin-bridgespy/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/github/license/sylvanaar/flipper-plugin-bridgespy)](https://github.com/sylvanaar/flipper-plugin-bridgespy/blob/master/LICENSE)
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.dev)
+[![Known Vulnerabilities](https://snyk.io/test/github/sylvanaar/flipper-plugin-bridgespy/badge.svg?targetFile=package.json)](https://snyk.io/test/github/sylvanaar/flipper-plugin-bridgespy?targetFile=package.json)
 
 > React Native bridge spy Flipper plugin
 
