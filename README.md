@@ -27,7 +27,7 @@ yarn run test
 
 👤 **Jon Akhtar (sylvanaar)**
 
--   Github: [@sylvanaar](https://github.com/sylvanaar)
+- Github: [@sylvanaar](https://github.com/sylvanaar)
 
 ## Show your support
 
@@ -39,6 +39,6 @@ Copyright © 2021 [Jon Akhtar (sylvanaar)](https://github.com/sylvanaar).
 
 This project is [MIT](https://github.com/sylvanaar/flipper-plugin-bridgespy/blob/master/LICENSE) licensed.
 
-* * *
+---
 
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
