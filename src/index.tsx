@@ -186,17 +186,17 @@ export default class extends FlipperPlugin<State, any, PersistedState> {
     );
 
     return (
-      <FlexColumn grow={true}>
+      <FlexColumn grow>
         <SearchableTable
           rowLineHeight={28}
           floating={false}
-          multiline={true}
-          allowRegexSearch={true}
+          multiline
+          allowRegexSearch
           columnSizes={columnSizes}
           columns={columns}
           onRowHighlighted={this.onRowHighlighted}
           rows={this.props.persistedState.messageRows}
-          stickyBottom={true}
+          stickyBottom
           actions={[ clearTableButton]}
         />
         <DetailSidebar>{this.renderSidebar()}</DetailSidebar>
